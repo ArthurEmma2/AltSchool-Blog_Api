@@ -13,13 +13,6 @@ const { post } = require("../app");
 
 const client = supertest.agent(app);
 
-// beforeAll(async () => {
-//   await connectDb();
-//   const user = await User.create(userRegData);
-//   const token = await user.createToken();
-//   client.set("Authorization", `Bearer ${token}`);
-// });
-
 let user;
 
 beforeEach(async () => {
@@ -165,29 +158,4 @@ describe("Blog Test Suite", () => {
     });
   });
 
-  describe("Test Post Delete Endpoints", () => {
-    let post;
-    it("with everything as it should be", async () => {
-      // Create two posts
-      post = await client
-        .post("/api/posts")
-        .send({ title: "Test Post 1", body: "Test Post Body 1" });
 
-      await client
-        .post("/api/posts")
-        .send({ title: "Test Post 2", body: "Test Post Body 2" });
-
-      // Assert creation
-      posts = await client.get("/api/posts");
-      expect(posts.body.count).toEqual(2);
-
-      // Delete one post
-      const postDelete = await client.delete("/api/posts/" + post.body._id);
-
-      // Assert deletion
-      expect(postDelete.statusCode).toEqual(204);
-      posts = await client.get("/api/posts");
-      expect(posts.body.count).toEqual(1);
-    });
-  });
-});
