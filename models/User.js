@@ -38,6 +38,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 
+
 UserSchema.methods.createVerificationToken = async function () {
   return jwt.sign(
     { username: this.username, id: this.id },
@@ -45,6 +46,7 @@ UserSchema.methods.createVerificationToken = async function () {
     { expiresIn: "1d" }
   );
 };
+
 
 
 module.exports = mongoose.model("User", UserSchema);
