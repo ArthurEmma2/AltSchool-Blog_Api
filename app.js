@@ -19,7 +19,7 @@ app.use("/api/posts", authMiddleware, blogRoutes);
 
 app.use(errorHandler);
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3344;
 
       mongoose.connect(process.env.MONGO_URL)
 

@@ -8,7 +8,8 @@ const userRegData = {
 };
 
 const incorrectRegData = {
-  lastName: "Ikechukwu",
+  firstName: "Test",
+  lastName: "emma",
   email: "testEmail@gmail.com",
   password: "testpassword",
   password2: "testpassword",
